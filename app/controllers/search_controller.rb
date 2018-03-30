@@ -2,6 +2,7 @@ class SearchController < ApplicationController
 
   def index
     if params[:query]
+      Query.create!(name: params[:query])
       conn = Faraday.new(:url => 'https://api.edamam.com') do |faraday|
         faraday.adapter  Faraday.default_adapter
       end
