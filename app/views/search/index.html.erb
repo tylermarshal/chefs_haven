@@ -6,29 +6,31 @@
   </div>
 <% end %>
 
-<h3>Search Results</h3>
-<div class="search-results">
+<% if @recipes %>
+  <h3>Search Results</h3>
+  <div class="search-results">
 
-  <% @recipes.each do |recipe| %>
-    <div class="recipe">
-      <div class="name">
-        <%= link_to recipe.name, recipe.url %>
+    <% @recipes.each do |recipe| %>
+      <div class="recipe">
+        <div class="name">
+          <%= link_to recipe.name, recipe.url %>
+        </div>
+        <div class="yield">
+          <%= recipe.yield %>
+        </div>
+        <div class="calories">
+          <%= recipe.calories %>
+        </div>
+        <div class="ingredients">
+          <% recipe.ingredients.each do |ingredient| %>
+          <%= ingredient.name %>
+          <% end %>
+        </div>
       </div>
-      <div class="yield">
-        <%= recipe.yield %>
-      </div>
-      <div class="calories">
-        <%= recipe.calories %>
-      </div>
-      <div class="ingredients">
-        <% recipe.ingredients.each do |ingredient| %>
-        <%= ingredient.name %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
 
-</div>
+  </div>
+<% end %>
 
 <h3>Past Searches</h3>
 
