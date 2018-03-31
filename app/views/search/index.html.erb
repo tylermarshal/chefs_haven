@@ -16,16 +16,19 @@
           <%= link_to recipe.name, recipe.url %>
         </div>
         <div class="yield">
-          <%= recipe.yield %>
+          Yield: <%= recipe.yield %>
         </div>
         <div class="calories">
-          <%= recipe.calories %>
+          Calories: <%= recipe.calories %>
         </div>
-        <div class="ingredients">
+        <ul class="ingredients">
+          Ingredients:
           <% recipe.ingredients.each do |ingredient| %>
-          <%= ingredient.name %>
+          <li>
+            <%= ingredient.name %>
+          </li>
           <% end %>
-        </div>
+        </ul>
       </div>
     <% end %>
 
