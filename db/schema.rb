@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180331015545) do
+ActiveRecord::Schema.define(version: 20180401161112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 20180331015545) do
     t.citext "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "search_terms_count", default: 0
   end
 
+  create_table "search_terms", force: :cascade do |t|
+    t.bigint "query_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["query_id"], name: "index_search_terms_on_query_id"
+  end
+
+  add_foreign_key "search_terms", "queries"
 end
