@@ -37,4 +37,9 @@ class SearchController < ApplicationController
       end
     end
 
+    def query_params
+      params[:query] = params[:query].downcase
+      params.permit(:query, :sort, :direction)
+    end
+
 end
