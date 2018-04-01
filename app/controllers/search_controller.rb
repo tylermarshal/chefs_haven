@@ -11,12 +11,8 @@ class SearchController < ApplicationController
         @query = Query.create!(name: params[:query])
         @query.search_terms.create!()
       end
-      conn = Faraday.new(:url => 'https://api.edamam.com') do |faraday|
-        faraday.adapter  Faraday.default_adapter
-      end
-      response = conn.get("/search?q=#{params[:query]}&count=10&app_id=#{ENV["EDAMAM_APP_ID"]}&app_key=#{ENV["EDAMAM_APP_KEY"]}")
-      parsed = JSON.parse(response.body, symbolize_names: true)
-      @recipes = parsed[:hits].map do |recipe|
+      json_response = EdamamService.new(params[:query]).json_response
+      @recipes = json_[:hits].map do |recipe|
         Recipe.new(recipe)
       end
     end
