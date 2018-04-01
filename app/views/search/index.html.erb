@@ -1,16 +1,5 @@
 <div class="main">
 
-  <h1>Chef's Haven</h1>
-
-  <h3>What's for dinner?</h3>
-
-  <%= form_tag :root, method: :get do %>
-  <div class="search-field">
-    <%= text_field_tag :query, "", placeholder: "Search for Recipe" %>
-    <%= submit_tag "Find Recipes"%>
-  </div>
-  <% end %>
-
   <% if @search.params_query %>
     <h3>Search Results</h3>
 
@@ -27,8 +16,8 @@
         <div class="calories">
           Calories: <%= recipe.calories %>
         </div>
+        <div>Ingredients:</div>
         <ul class="ingredients">
-          Ingredients:
           <% recipe.ingredients.each do |ingredient| %>
           <li>
             <%= ingredient.name %>

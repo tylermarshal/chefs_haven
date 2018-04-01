@@ -6,9 +6,24 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
   </head>
 
   <body>
+    <header>
+      <h1>Chef's Haven</h1>
+
+      <div class="search-bar">
+        <h3>What's for dinner?</h3>
+
+        <%= form_tag :root, method: :get do %>
+        <div class="search-field">
+          <%= text_field_tag :query, "", placeholder: "Search for Recipe" %>
+          <%= submit_tag "Find Recipes"%>
+        </div>
+        <% end %>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
