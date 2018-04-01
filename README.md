@@ -1,24 +1,53 @@
-# README
+# Chef's Haven
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Chef's Haven is an application that allows users to search for recipes based on what they are hungry for, whether it be a single ingredient or a type of meal. In addition, users can view past searches made by all users to get some ideas, while sorting these past searches by name, count, or most recent date searched.
 
-Things you may want to cover:
+Chef's Haven uses the [Edamam Recipe Search API](https://www.edamam.com/) to discover recipes.
 
-* Ruby version
+[Try it out on Heroku](https://chefshaven.herokuapp.com/)
 
-* System dependencies
+[![forthebadge](http://forthebadge.com/images/badges/made-with-ruby.svg)](#)
 
-* Configuration
+## Setup & Installation
 
-* Database creation
+Clone the Chef's Haven Github repository into a directory of your choosing.
 
-* Database initialization
+```
+git clone https://github.com/tylermarshal/chefs_haven.git
+```
 
-* How to run the test suite
+Move into the Chef's Haven directory & install the required gems.
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+cd chefshaven
+```
+```
+bundle install
+```
 
-* Deployment instructions
+From here you will need to create the PostgreSQL database and tables:
 
-* ...
+```
+rails db:create db:migrate
+```
+
+To run the application locally, start a rails server:
+
+```
+rails s
+```
+
+After that you are all set to search for your next meal!
+
+
+## Testing
+
+To run the test suite, you can execute the following in your terminal:
+
+```
+bundle exec rspec
+```
+
+## Creator
+[Tyler Madsen](https://github.com/tylermarshal)
+
