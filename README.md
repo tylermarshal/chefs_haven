@@ -31,7 +31,22 @@ From here you will need to create the PostgreSQL database and tables:
 rails db:create db:migrate
 ```
 
-To run the application locally, start a rails server:
+To run the application locally, you will need to sign up for Edamam as a developer and get an application ID and key. To do so, go to the [Edamam Recipe Search API](https://www.edamam.com/) page.
+
+Once you have your ID & Key, you will need to setup Figaro:
+
+```
+bundle exec figaro install
+```
+
+This will create an application.yml file in your config folder. In the application.yml file, add the following:
+
+```
+EDAMAM_APP_ID: <Your Edamam Application ID here>
+EDAMAM_APP_KEY: <Your Edamam Application Key here>
+```
+
+Start a rails server and visit http://localhost:3000/:
 
 ```
 rails s
