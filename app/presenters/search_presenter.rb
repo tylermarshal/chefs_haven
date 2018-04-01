@@ -37,7 +37,7 @@ class SearchPresenter
     if sort
       @sorted = Query.sort(sort, direction)
     else
-      @sored = Query.sort
+      @sorted = Query.sort
     end
   end
 
