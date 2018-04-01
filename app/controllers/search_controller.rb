@@ -12,9 +12,7 @@ class SearchController < ApplicationController
         @query.search_terms.create!()
       end
       json_response = EdamamService.new(params[:query]).json_response
-      @recipes = json_[:hits].map do |recipe|
-        Recipe.new(recipe)
-      end
+      @recipes = RecipeService.create_recipes(json_response)
     end
     if params[:sort]
       @search = Query.sort(params[:sort], params[:direction])
