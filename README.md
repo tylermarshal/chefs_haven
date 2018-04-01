@@ -1,6 +1,6 @@
 # Chef's Haven
 
-Chef's Haven is an application that allows users to search for recipes based on what they are hungry for, whether it be a single ingredient or a type of meal. In addition, users can view past searches made by all users to get some ideas, while sorting these past searches by name, count, or most recent date searched.
+Chef's Haven is an application that allows users to search for recipes based on what they are hungry for, whether it be a single ingredient or a type of meal. In addition, users can view past searches made by all users to get some ideas and sort these past searches by name, count, or most recent date searched.
 
 Chef's Haven uses the [Edamam Recipe Search API](https://www.edamam.com/) to discover recipes.
 
