@@ -1,64 +1,78 @@
-<h3>What's for dinner?</h3>
+<div class="main">
 
-<%= form_tag :root, method: :get do %>
+  <h1>Chef's Haven</h1>
+
+  <h3>What's for dinner?</h3>
+
+  <%= form_tag :root, method: :get do %>
   <div class="search-field">
     <%= text_field_tag :query, "", placeholder: "Search for Recipe" %>
     <%= submit_tag "Find Recipes"%>
   </div>
-<% end %>
+  <% end %>
 
-<% if @recipes %>
+  <% if @recipes %>
   <h3>Search Results</h3>
 
   <div class="search-results">
 
     <% @recipes.each do |recipe| %>
-      <div class="recipe">
-        <div class="name">
-          <%= link_to recipe.name, recipe.url %>
-        </div>
-        <div class="yield">
-          Yield: <%= recipe.yield %>
-        </div>
-        <div class="calories">
-          Calories: <%= recipe.calories %>
-        </div>
-        <ul class="ingredients">
-          Ingredients:
-          <% recipe.ingredients.each do |ingredient| %>
-          <li>
-            <%= ingredient.name %>
-          </li>
-          <% end %>
-        </ul>
+    <div class="recipe">
+      <div class="name">
+        <%= link_to recipe.name, recipe.url %>
       </div>
+      <div class="yield">
+        Yield: <%= recipe.yield %>
+      </div>
+      <div class="calories">
+        Calories: <%= recipe.calories %>
+      </div>
+      <ul class="ingredients">
+        Ingredients:
+        <% recipe.ingredients.each do |ingredient| %>
+        <li>
+          <%= ingredient.name %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
     <% end %>
 
   </div>
-<% end %>
-
-<h3>Past Searches</h3>
-
-<table class="search-history">
-  <tr>
-    <th><%= sortable "name", "Search Term" %></th>
-    <th><%= sortable "search_terms_count", "Count" %></th>
-    <th><%= sortable "updated_at", "Date" %></th>
-  </tr>
-  <% @search.each do |query| %>
-  <tr>
-    <td><%= link_to query.name, {:query => query.name} %></td>
-    <td><%= query.search_terms_count %></td>
-    <td><%= query.updated_at %></td>
-  </tr>
   <% end %>
-</table>
 
+</div>
+
+<div class="sidenav-left">
+
+  <h3>Past Searches</h3>
+
+  <table class="search-history">
+    <tr>
+      <th><%= sortable "name", "Search Term" %></th>
+      <th><%= sortable "search_terms_count", "Count" %></th>
+      <th><%= sortable "updated_at", "Date" %></th>
+    </tr>
+    <% @search.each do |query| %>
+    <tr>
+      <td><%= link_to query.name, {:query => query.name} %></td>
+      <td><%= query.search_terms_count %></td>
+      <td><%= query.updated_at.strftime("%b%e, %Y %I:%M%p") %></td>
+    </tr>
+    <% end %>
+  </table>
+
+</div>
 
 <% if @query %>
+
+<div class="sidenav-right">
+
   <h3>This Query's Search History</h3>
 
   <% @query.search_terms.sort_date.each do |search_term| %>
-    <p><%= search_term.created_at %></p>
+  <p><%= search_term.created_at.strftime("%b%e, %Y %I:%M%p") %></p>
   <% end %>
-<% end %>
+  <% end %>
+
+</div>
